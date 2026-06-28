@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Thing",
+    "text" : "really cool thing, pls buy it rn",
+    "imgSrc": "/CardHolder/imgPlaceholder.png"
+  },
+  {
+    "title": "Thing2",
+    "text" : "really cool thing, even better than thing pls buy it rn",
+    "imgSrc": "/CardHolder/imgPlaceholder.png"
+  }
+]

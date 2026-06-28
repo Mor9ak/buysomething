@@ -1,11 +1,12 @@
 import React from 'react';
-import Card from '../shared/Card'
+import CardHolder from "@/widgets/CardHolder/CardHolder";
+import Article from "@/shared/article/Article";
 
 const Home = () => {
     return (
-        <div>
-            <h1 className={'font-bold text-mainTextCol text-2xl'}>Welcome to Buy something</h1>
-            <Card title="Buy something" text={''}></Card>
+        <div className={'flex flex-col justify-center items-center gap-9'}>
+            <Article title={'Welcome to Buy something'} />
+            <CardHolder />
         </div>
     );
 }
