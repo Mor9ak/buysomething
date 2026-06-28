@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-    --color-bgCol: #E5E9F0;
-    --color-secBgCol: #F6F8FA;
+    --color-bgCol: #0F131A;
+    --color-secBgCol: #1A202A;
+    --color-cardBgCol: #232A36;
 
-    --color-mainTextCol: #0B0E11;
-    --color-textCol: #2A323C;
-    --color-secTextCol: #5A677A;
+    --color-mainTextCol: #F0F3F8;
+    --color-textCol: #C8D0DC;
+    --color-secTextCol: #8B9AAB;
 
-    --color-borderCol: #B1BCC9;
-    --color-hoverCol: #3D4A5C;
+    --color-borderCol: #384252;
+    --color-hoverCol: #4F5E74;
+
+    --color-accentCol: #6A8CFF;
 }
 
 @layer components {
