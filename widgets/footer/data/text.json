@@ -1,0 +1,25 @@
+{
+  "upperText": {
+    "text": "This is one of my portfolio projects. Made by ",
+    "linkText": "Kazakou Yaroslau (Mor9ak).",
+    "linkHref": "https://t.me/mor9ak"
+  },
+  "links": [
+    {
+      "title": "About us",
+      "href": "/AboutUs"
+    },
+    {
+      "title": "Contacts",
+      "href": "/Contacts"
+    },
+    {
+      "title": "Our email",
+      "href": "mailto:pls.dont.click.its.mock.thing@example.com"
+    },
+    {
+      "title": "Job opening",
+      "href": "/JobOpening"
+    }
+  ]
+}

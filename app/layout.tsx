@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import "./globals.css";
 import React from "react";
 import Header from "@/widgets/header/Header";
+import Footer from "@/widgets/footer/Footer";
 
 export const metadata: Metadata = {
     title: "Buy something",
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className="min-h-full flex flex-col bg-bgCol">
         <Header/>
         {children}
+        <Footer/>
         </body>
         </html>
     );
