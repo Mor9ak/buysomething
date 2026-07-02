@@ -1,6 +1,6 @@
 import React from 'react';
 import CardHolder from "@/widgets/CardHolder/CardHolder";
-import Article from "@/shared/article/Article";
+import Article from "@/shared/Article";
 
 const Home = () => {
     return (
