@@ -1,10 +1,12 @@
 [
   {
+    "id": "0",
     "title": "Thing",
     "text" : "really cool thing, pls buy it rn",
     "imgSrc": "/CardHolder/imgPlaceholder.png"
   },
   {
+    "id": "15170821",
     "title": "Thing2",
     "text" : "really cool thing, even better than thing pls buy it rn",
     "imgSrc": "/CardHolder/imgPlaceholder.png"
