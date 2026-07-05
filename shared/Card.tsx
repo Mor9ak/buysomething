@@ -21,7 +21,6 @@ const Card = (props: CardProps) => {
                     <Image src={props.imgSrc} alt={props.title} width={100} height={100}
                            className={'w-full h-full rounded-xl object-cover'}/>
                 </div>}
-            {props.description && <p className={'text-secTextCol'}>{props.description}</p>}
         </div>
     );
 }
