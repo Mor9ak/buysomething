@@ -22,7 +22,7 @@ const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
                 <Image src={card.imgSrc} alt={`${card.title} image`} width={100} height={100}
                        className="w-full h-full object-cover rounded-md"/>
             </div>
-            <div className="flex flex-col gap-7 justify-center items-center text-wrap md:max-w-xl mx-5 md:mx-0">
+            <div className="flex flex-col gap-7 justify-center items-center text-wrap md:max-w-xl mx-10 md:mx-0">
                 <h2 className={'text-center text-6xl font-bold '}>{card.title}</h2>
                 <h3 className={'text-start text-2xl '}>{card.text}</h3>
                 {card.description && <p className={'text-secTextCol'}>
