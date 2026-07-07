@@ -1,6 +1,5 @@
 import React from 'react';
 import {notFound} from "next/navigation";
-import {getCard} from "@/features/card/cardFunctions";
 import Image from "next/image";
 
 const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
@@ -11,7 +10,20 @@ const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
         notFound();
     }
 
-    const card = getCard(id);
+    const baseURL = 'http://localhost:3000';
+    const response = await fetch(`${baseURL}/api/productPage/${id}`);
+
+    if (!response.ok) {
+        if (response.status === 404) {
+            notFound()
+        }
+        throw new Error('Not Found');
+    }
+
+    const card = await response.json();
+
+    console.log(card);
+
     if (!card) {
         notFound();
     }
