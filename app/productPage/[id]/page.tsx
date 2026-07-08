@@ -22,8 +22,6 @@ const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
 
     const card = await response.json();
 
-    console.log(card);
-
     if (!card) {
         notFound();
     }
