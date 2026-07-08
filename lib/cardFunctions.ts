@@ -1,4 +1,5 @@
 import cards from '@/widgets/CardHolder/data/cards.json';
+import {CardProps} from "@/shared/Card";
 
 export function isCardExist(id: number | string) {
     console.log('\nisCardExist');
@@ -22,4 +23,18 @@ export function getCard(id: number | string) {
     console.log(`Card with id ${strId} not found`);
     console.log ('failure');
     return null;
+}
+
+export function addCard(card: CardProps) {
+
+    const newCard = {
+        ...card,
+        id: String(card.id ?? cards.length)
+    };
+
+    if (cards.some(cardC => cardC.id === newCard.id)) {
+        newCard.id = cards.length.toString();
+    }
+
+    cards.push(newCard);
 }
