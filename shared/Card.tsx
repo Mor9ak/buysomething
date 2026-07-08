@@ -4,8 +4,8 @@ import Image from 'next/image'
 export interface CardProps {
     id?: string | number;
     title: string;
-    text?: string;
-    imgSrc?: string;
+    text: string;
+    imgSrc: string;
     description?: string;
 }
 
