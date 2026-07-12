@@ -1,0 +1,23 @@
+{
+  "article": {
+    "title": "Thank you for your attention"
+  },
+  "textBlock": {
+    "h2": "Small article about me",
+    "h3": "I am Kazakou Yaroslau, 18 y.o. Learning frontend development on my own.",
+    "p": "I've already used typescript, react, next.js, astro at my pet project. Now i'm student at BSUiR (Belarus, Minsk). I welcome any job/order/internship."
+  },
+  "section": {
+    "h3": "You can contact me at:",
+    "links": [
+      {
+        "title": "Telegram",
+        "href": "https://t.me/mor9ak"
+      },
+      {
+        "title": "Email",
+        "href": "mailto:kazakou.yaroslau@gmail.com"
+      }
+    ]
+  }
+}
