@@ -2,7 +2,7 @@ import {NextResponse} from "next/server";
 import {getAllCards} from "@/lib/cardFunctions";
 
 export async function GET (request: Request) {
-    const cards = getAllCards();
+    const cards = await getAllCards();
 
     if (cards.length <= 0) {
         return NextResponse.json({

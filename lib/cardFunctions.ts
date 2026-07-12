@@ -1,49 +1,39 @@
-import cards from './data/cards.json';
+import fs from 'node:fs/promises';
+import path from 'path';
 import {CardProps} from "@/shared/Card";
 
-export function isCardExist(id: number | string) {
-    console.log('\nisCardExist');
-    console.log(`ID - ${id}`);
-    console.log('type of ID - ' + typeof id);
+const filePath = path.join(process.cwd(), 'lib', 'data', 'cards.json');
 
-    const strId = typeof id === 'string' ? id : id.toString();
-    return cards.some(card => card.id === strId);
+export async function ensureData() {
+    try {
+        await fs.access(filePath, fs.constants.F_OK);
+        console.log('File exist');
+    } catch (error) {
+        console.log(`File not found, creating new, ${ error}`);
+        await fs.writeFile(filePath, JSON.stringify([]));
+    }
 }
 
-export function getCard(id: number | string) {
-    console.log('\ngetCard');
-    console.log(`ID - ${id}`);
-    console.log('type of ID - ' + typeof id);
+export async function getCard(id: string | number): Promise<CardProps | null> {
+    console.log(`Get card - id: ${id}; type - ${typeof id}`);
 
-    const strId = typeof id === 'string' ? id : id.toString();
-    if (isCardExist(strId)) {
-        console.log ('success');
-        return cards.find((card) => card.id === strId);
+    try {
+        await ensureData();
+        const rawData : CardProps[] = JSON.parse(await fs.readFile(filePath, 'utf8'));
+
+        const idStr = String(id);
+        const card = rawData.find((card) => card.id === idStr);
+
+        return card || null;
+
+    } catch (error) {
+        console.log(`Error - ${new Date().toISOString()} - ${error}`);
+        return null;
     }
-    console.log(`Card with id ${strId} not found`);
-    console.log ('failure');
-    return null;
 }
 
-export function getAllCards() {
-    console.log('\ngetAllCards');
-    if (cards.length <= 0) {
-        console.log('critical error, empty data');
-        return [];
-    }
-    return cards;
-}
-
-export function addCard(card: CardProps) {
-
-    const newCard = {
-        ...card,
-        id: String(card.id ?? cards.length)
-    };
-
-    if (cards.some(cardC => cardC.id === newCard.id)) {
-        newCard.id = cards.length.toString();
-    }
-
-    cards.push(newCard);
+export async function getAllCards(): Promise<CardProps[]> {
+    await ensureData()
+    console.log(`Get all cards`);
+    return JSON.parse(await fs.readFile(filePath, 'utf8'));
 }
