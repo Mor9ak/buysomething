@@ -37,3 +37,28 @@ export async function getAllCards(): Promise<CardProps[]> {
     console.log(`Get all cards`);
     return JSON.parse(await fs.readFile(filePath, 'utf8'));
 }
+
+export async function addCard(card: CardProps) {
+    await ensureData();
+
+    try {
+        console.log('Add card');
+
+        const cards = JSON.parse(await fs.readFile(filePath, 'utf8'));
+        const newCard = {
+            ...card,
+            id: card.id ?? cards.lenght
+        }
+
+        if (cards.find((card: CardProps) => card.id === newCard.id)) {
+            newCard.id = cards.lenght;
+        }
+
+        cards.push(newCard);
+
+        await fs.writeFile(filePath, JSON.stringify(cards, null, 2));
+
+    } catch (error) {
+        console.log(`Error - ${new Date().toISOString()} - ${error}`);
+    }
+}
