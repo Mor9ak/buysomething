@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'path';
 import {CardProps} from "@/shared/Card";
 
-const filePath = path.join(process.cwd(), 'lib', 'data', 'cards.json');
+const filePath = path.join(process.cwd(), 'lib', 'cards', 'data', 'cards.json');
 
 export async function ensureData() {
     try {

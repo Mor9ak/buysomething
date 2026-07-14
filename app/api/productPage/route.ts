@@ -1,5 +1,5 @@
 import {NextResponse} from "next/server";
-import {getAllCards} from "@/lib/cardFunctions";
+import {getAllCards} from "@/lib/cards/cardFunctions";
 
 export async function GET (request: Request) {
     const cards = await getAllCards();

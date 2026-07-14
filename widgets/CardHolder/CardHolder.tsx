@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from "@/shared/Card";
-import cards from '@/lib/data/cards.json'
+import cards from '@/lib/cards/data/cards.json'
 import {CardProps} from "@/shared/Card";
 import Link from "next/link";
 
