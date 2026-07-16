@@ -2,18 +2,23 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function proxy(request: NextRequest) {
-    if (request.url !== 'Admin/:path*' && request.url !== '/AdminAccess/:path*') {
-        return NextResponse.redirect(new URL('/', request.url));
+    const {pathname} = request.nextUrl;
+
+    const isAdminAccessPage = pathname.startsWith('/AdminAccess');
+    const isAdminPage = pathname.startsWith('/Admin');
+
+    if (isAdminAccessPage) {
+        return NextResponse.next();
     }
 
-    const pass = request.cookies.get('password')?.value;
+    if (isAdminPage) {
+        const password = request.cookies.get('password')?.value;
 
-    if (pass !== process.env.PASSWORD) {
-        return NextResponse.redirect(new URL('/', request.url));
-    }
-
-    if (request.url === '/AdminAccess/:path*') {
-        return NextResponse.redirect(new URL('/Admin/', request.url))
+        if (password === process.env.ADMIN_PASSWORD) {
+            return NextResponse.next();
+        } else {
+            return NextResponse.redirect(new URL('/AdminAccess', request.url));
+        }
     }
 
     return NextResponse.next();
