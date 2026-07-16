@@ -2,14 +2,27 @@
 import React from 'react';
 
 const Page = () => {
-    const [password, setPassword] = React.useState('');
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(event.target.value);
-    }
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         console.log('in progress');
+
+        const formData = new FormData(event.currentTarget);
+
+        try {
+            const response = await fetch('/api/adminAccess', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (response.ok) {
+                alert('Written successfully.');
+            } else {
+                alert('Error occurred.');
+            }
+
+        } catch (error) {
+            console.log(`Error: ${error} - ${new Date().toISOString()}`);
+        }
     }
 
     return (
@@ -17,8 +30,8 @@ const Page = () => {
             <form className={'flex flex-col justify-center items-center text-textCol text uniPadding uniBorder w-fit'}
                   onSubmit={handleSubmit}>
                 <label className={'text-2xl '}>Password</label>
-                <input type={'password'} className={'text-xl '} placeholder={'Enter password...'}
-                       onChange={handleChange}/>
+                <input type={'password'} name={'password'} required className={'text-xl '} placeholder={'Enter password...'}/>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
