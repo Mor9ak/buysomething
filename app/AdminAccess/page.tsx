@@ -27,11 +27,11 @@ const Page = () => {
 
     return (
         <div className="flex flex-col justify-center items-center ">
-            <form className={'flex flex-col justify-center items-center text-textCol text uniPadding uniBorder w-fit'}
+            <form className={'flex flex-col justify-center items-center text-textCol text uniPadding uniBorder w-fit gap-5'}
                   onSubmit={handleSubmit}>
                 <label className={'text-2xl '}>Password</label>
                 <input type={'password'} name={'password'} required className={'text-xl '} placeholder={'Enter password...'}/>
-                <button type="submit">Submit</button>
+                <button type="submit" className={'bg-accentCol rounded-full w-full px-7 py-2 '}>Submit</button>
             </form>
         </div>
     );
