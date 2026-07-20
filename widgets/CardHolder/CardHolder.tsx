@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const CardHolder = () => {
     return (
-        <ul className={'flex flex-row gap-7 justify-center items-start'}>
+        <ul className={'flex flex-row gap-7 justify-center items-start flex-wrap'}>
             {cards.map((card : CardProps, i) => (
                 <li key={i}>
                     <Link href={`/productPage/${card.id}`}>
