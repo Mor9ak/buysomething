@@ -1,16 +1,16 @@
 import React from 'react';
 import {notFound} from "next/navigation";
 import Image from "next/image";
+import {getBaseURL} from '@/lib/getBaseURL';
 
 const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
-
     const {id} = await params;
 
     if (!id) {
         notFound();
     }
 
-    const baseURL = 'http://localhost:3000';
+    const baseURL = getBaseURL();
     const response = await fetch(`${baseURL}/api/productPage/${id}`);
 
     if (!response.ok) {
