@@ -47,11 +47,11 @@ export async function addCard(card: CardProps) {
         const cards = JSON.parse(await fs.readFile(filePath, 'utf8'));
         const newCard = {
             ...card,
-            id: card.id ?? cards.lenght
+            id: card.id ?? cards.length
         }
 
         if (cards.find((card: CardProps) => card.id === newCard.id)) {
-            newCard.id = cards.lenght;
+            newCard.id = cards.length;
         }
 
         cards.push(newCard);
