@@ -1,7 +1,8 @@
 import React from 'react';
 import {notFound} from "next/navigation";
 import Image from "next/image";
-import {getBaseURL} from '@/lib/getBaseURL';
+import cards from '@/lib/cards/data/cards.json';
+// import {getBaseURL} from '@/lib/getBaseURL';
 
 const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
     const {id} = await params;
@@ -10,21 +11,28 @@ const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
         notFound();
     }
 
-    const baseURL = getBaseURL();
-    const response = await fetch(`${baseURL}/api/productPage/${id}`);
-
-    if (!response.ok) {
-        if (response.status === 404) {
-            notFound()
-        }
-        throw new Error('Not Found');
-    }
-
-    const card = await response.json();
+    const card = cards.find((card) => card.id === id);
 
     if (!card) {
         notFound();
     }
+
+    // const baseURL = getBaseURL();
+    // const response = await fetch(`${baseURL}/api/productPage/${id}`);
+    //
+    // if (!response.ok) {
+    //     if (response.status === 404) {
+    //         notFound()
+    //     }
+    //     throw new Error('Not Found');
+    // }
+    //
+    // const card = await response.json();
+    //
+    // if (!card) {
+    //     notFound();
+    // }
+    // This code became just a comment, because Vercel have some problem, with reading JSON files, so instead of using api call I'll just use json directly.
 
     return (
         <div className="flex flex-col md:flex-row gap-9 justify-evenly items-center text-textCol">
