@@ -1,7 +1,7 @@
 import React from 'react';
 import {notFound} from "next/navigation";
 import Image from "next/image";
-import cards from '@/lib/cards/data/cards.json';
+import {cards} from '@/lib/cards/data/cards';
 // import {getBaseURL} from '@/lib/getBaseURL';
 
 const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
