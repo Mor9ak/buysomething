@@ -2,6 +2,7 @@ import React from 'react';
 import {notFound} from "next/navigation";
 import Image from "next/image";
 import {cards} from '@/lib/cards/data/cards';
+import BuyButton from "@/entries/BuyButton";
 // import {getBaseURL} from '@/lib/getBaseURL';
 
 const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
@@ -46,6 +47,7 @@ const ProductPage = async ({params}: { params: Promise<{ id: string }> }) => {
                 {card.description && <p className={'text-secTextCol'}>
                     {card.description}
                 </p>}
+                <BuyButton id={card.id} title={card.title} />
             </div>
         </div>
     );
